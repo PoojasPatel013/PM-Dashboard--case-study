@@ -1,73 +1,58 @@
-let currentSlide = 0
-const totalSlides = 8
-const slidesWrapper = document.getElementById("slidesWrapper")
-const navDots = document.querySelectorAll(".nav-dot")
-const prevBtn = document.getElementById("prevBtn")
-const nextBtn = document.getElementById("nextBtn")
-
-function updateSlide(slideIndex) {
-  currentSlide = slideIndex
-  const translateX = -(slideIndex * 12.5)
-  slidesWrapper.style.transform = `translateX(${translateX}%)`
-
-  navDots.forEach((dot, index) => {
-    dot.classList.toggle("active", index === slideIndex)
-  })
-}
-
-function nextSlide() {
-  if (currentSlide < totalSlides - 1) {
-    updateSlide(currentSlide + 1)
-  }
-}
-
-function prevSlide() {
-  if (currentSlide > 0) {
-    updateSlide(currentSlide - 1)
-  }
-}
-
-// Navigation event listeners
-navDots.forEach((dot, index) => {
-  dot.addEventListener("click", () => updateSlide(index))
-})
-
-nextBtn.addEventListener("click", nextSlide)
-prevBtn.addEventListener("click", prevSlide)
-
-// Keyboard navigation
-document.addEventListener("keydown", (e) => {
-  if (e.key === "ArrowRight" || e.key === " ") {
-    e.preventDefault()
-    nextSlide()
-  } else if (e.key === "ArrowLeft") {
-    e.preventDefault()
-    prevSlide()
-  }
-})
-
-// Touch/swipe support
-let startX = 0
-let endX = 0
-
-document.addEventListener("touchstart", (e) => {
-  startX = e.touches[0].clientX
-})
-
-document.addEventListener("touchend", (e) => {
-  endX = e.changedTouches[0].clientX
-  const diff = startX - endX
-
-  if (Math.abs(diff) > 50) {
-    if (diff > 0) {
-      nextSlide()
-    } else {
-      prevSlide()
-    }
-  }
-})
-
-// Initialize presentation
 document.addEventListener("DOMContentLoaded", () => {
-  updateSlide(0)
+  const navLinks = document.querySelectorAll(".nav-link")
+  const contentSections = document.querySelectorAll(".content-section")
+
+  function showSection(targetId) {
+    // Hide all sections
+    contentSections.forEach((section) => {
+      section.classList.remove("active")
+    })
+
+    // Remove active class from all nav links
+    navLinks.forEach((link) => {
+      link.classList.remove("active")
+    })
+
+    // Show target section
+    const targetSection = document.querySelector(targetId)
+    if (targetSection) {
+      targetSection.classList.add("active")
+    }
+
+    // Add active class to clicked nav link
+    const activeLink = document.querySelector(`a[href="${targetId}"]`)
+    if (activeLink) {
+      activeLink.classList.add("active")
+    }
+
+    // Scroll to top of main content
+    document.querySelector(".main-content").scrollTop = 0
+  }
+
+  // Add click event listeners to navigation links
+  navLinks.forEach((link) => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault()
+      const targetId = this.getAttribute("href")
+      showSection(targetId)
+    })
+  })
+
+  // Show first section by default
+  showSection("#problem-statement")
+
+  // Handle browser back/forward buttons
+  window.addEventListener("popstate", (e) => {
+    if (e.state && e.state.section) {
+      showSection(e.state.section)
+    }
+  })
+
+  // Update URL when section changes (optional)
+  navLinks.forEach((link) => {
+    link.addEventListener("click", function () {
+      const targetId = this.getAttribute("href")
+      history.pushState({ section: targetId }, "", targetId)
+    })
+  })
 })

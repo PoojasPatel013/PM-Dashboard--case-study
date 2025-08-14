@@ -15,226 +15,279 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="presentation-container">
-    <div class="slides-wrapper" id="slidesWrapper">
+  <!-- Sidebar Navigation -->
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <h2>PM Dashboard Case Study</h2>
+    </div>
+    <ul class="nav-menu">
+      <li><a href="#problem-statement" class="nav-link active">Problem Statement</a></li>
+      <li><a href="#scenario" class="nav-link">Scenario</a></li>
+      <li><a href="#solution" class="nav-link">Solution</a></li>
+      <li><a href="#metrics" class="nav-link">Metrics</a></li>
+      <li><a href="#workflows" class="nav-link">Workflows</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Problem Statement Section -->
+    <section id="problem-statement" class="content-section active">
+      <h1>Problem Statement</h1>
+      <p class="intro-text">Product Managers often struggle to get quick, clear insights into deployment and incident status. Current DevOps tools are built for engineers — filled with technical jargon, raw logs, and CI/CD details that PMs don't need.</p>
       
-      <!-- Slide 1: Title -->
-      <div class="slide">
-        <div class="slide-content">
-          <h1>PM Dashboard Case Study</h1>
-          <p>A PM-friendly DevOps Tracker Dashboard that helps non-technical stakeholders understand releases and incidents quickly. The solution transforms complex technical data into actionable insights for product managers.</p>
-          <div class="kpi-grid">
-            <div class="kpi-card">
-              <span class="kpi-number">85%</span>
-              <div class="kpi-label">Reduction in eng pings</div>
+      <div class="problem-grid">
+        <div class="problem-card">
+          <h3>🔍 Delayed Release Readiness</h3>
+          <p>PMs spend extra time chasing updates from engineering teams, delaying decision-making and stakeholder communication.</p>
+        </div>
+        <div class="problem-card">
+          <h3>📞 Over-reliance on Engineering</h3>
+          <p>Constant interruptions to engineering teams for status updates that should be self-service.</p>
+        </div>
+        <div class="problem-card">
+          <h3>🔀 Scattered Workflows</h3>
+          <p>Information scattered across multiple tools without a single, business-friendly dashboard.</p>
+        </div>
+      </div>
+
+      <div class="impact-section">
+        <h2>Business Impact</h2>
+        <p>This lack of a <strong>single, business-friendly dashboard</strong> creates inefficiencies that cascade through the entire product development cycle, affecting stakeholder confidence and team productivity.</p>
+      </div>
+    </section>
+
+    <!-- Scenario Section -->
+    <section id="scenario" class="content-section">
+      <h1>Scenario</h1>
+      <div class="scenario-story">
+        <div class="persona-card">
+          <h2>Meet Pooja</h2>
+          <p><strong>Role:</strong> Product Manager for the Core Platform</p>
+          <p><strong>Situation:</strong> Leadership meeting in 30 minutes</p>
+        </div>
+
+        <div class="needs-section">
+          <h3>What Pooja Needs to Confirm:</h3>
+          <ol class="scenario-list">
+            <li>Is the urgent release live and stable?</li>
+            <li>Are there any active incidents that might impact stakeholders?</li>
+            <li>Can she quickly prepare a status update without asking engineers?</li>
+          </ol>
+        </div>
+
+        <div class="current-process">
+          <h3>Current Painful Process:</h3>
+          <div class="process-steps">
+            <div class="step">
+              <span class="step-number">1</span>
+              <p>Log into multiple DevOps tools</p>
             </div>
-            <div class="kpi-card">
-              <span class="kpi-number">3 min</span>
-              <div class="kpi-label">Avg status check time</div>
+            <div class="step">
+              <span class="step-number">2</span>
+              <p>Interpret highly technical logs and dashboards</p>
             </div>
-            <div class="kpi-card">
-              <span class="kpi-number">100%</span>
-              <div class="kpi-label">Stakeholder visibility</div>
+            <div class="step">
+              <span class="step-number">3</span>
+              <p>Message engineers for simplified explanations</p>
             </div>
           </div>
+          <p class="process-impact">This wastes time and increases the risk of miscommunication.</p>
         </div>
-        <div class="slide-number">1 / 8</div>
+      </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="content-section">
+      <h1>Solution</h1>
+      <div class="solution-overview">
+        <h2>DevOps Tracker Dashboard</h2>
+        <p class="solution-description">A simplified, consolidated tool tailored for non-technical roles like PMs, POs, and Support Leads.</p>
       </div>
 
-      <!-- Slide 2: Problem & Research -->
-      <div class="slide">
-        <div class="slide-content">
-          <h2>Research & Problem Definition</h2>
-          <p><strong>Persona:</strong> Pooja - PM, Core Platform</p>
-          <p><strong>Goal:</strong> Check deployment readiness & incident impact in preparation for stakeholder meetings</p>
-          
-          <h3>Opportunities Identified</h3>
-          <div class="feature-grid">
-            <div class="feature-card">
-              <h4>🔍 Pain Point: No Single Source</h4>
-              <p>Status information scattered across Slack, Jira, GitHub, and various monitoring tools</p>
-            </div>
-            <div class="feature-card">
-              <h4>🤖 Pain Point: Technical Jargon</h4>
-              <p>Complex technical language that doesn't translate to business impact or user experience</p>
-            </div>
-            <div class="feature-card">
-              <h4>📝 Pain Point: Manual Reporting</h4>
-              <p>Time-consuming manual communication and repetitive status update requests</p>
-            </div>
-            <div class="feature-card">
-              <h4>⚡ Opportunity: Automated Insights</h4>
-              <p>Auto-generate PM-friendly summaries and business impact assessments</p>
-            </div>
-            <div class="feature-card">
-              <h4>📊 Opportunity: Visual Dashboard</h4>
-              <p>Single dashboard showing deployment status, incidents, and team communication flows</p>
-            </div>
-            <div class="feature-card">
-              <h4>🎯 Opportunity: Stakeholder Updates</h4>
-              <p>One-click stakeholder updates with business context and impact metrics</p>
-            </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>🎯 Release Status Card</h3>
+          <ul>
+            <li>Last deployment date/time</li>
+            <li>Version number & readiness state</li>
+            <li>Deployment owner contact</li>
+          </ul>
+        </div>
+        <div class="feature-card">
+          <h3>🚨 Incident Summaries in Plain Language</h3>
+          <ul>
+            <li>Impact, severity, ETA, owner</li>
+            <li>Auto-generated from engineering incident tools</li>
+          </ul>
+        </div>
+        <div class="feature-card">
+          <h3>📊 Automated Status Reports</h3>
+          <ul>
+            <li>One-click or scheduled Slack/Email updates</li>
+          </ul>
+        </div>
+        <div class="feature-card">
+          <h3>🔐 SSO Login</h3>
+          <ul>
+            <li>Okta, Google Workspace, or Azure AD for quick, secure access</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="dashboard-showcase">
+        <h2>Dashboard Screenshots</h2>
+        <div class="screenshot-grid">
+          <div class="screenshot-item">
+            <img src="public/dashboard2.png" alt="Dashboard Overview showing release status and incidents" />
+            <p>Main dashboard with release tracking and incident management</p>
+          </div>
+          <div class="screenshot-item">
+            <img src="public/dashboard-activity.png" alt="Team Communication Map" />
+            <p>Team communication hierarchy and activity tracking</p>
+          </div>
+          <div class="screenshot-item">
+            <img src="public/dashboardactivitylog.png" alt="Activity Log with filtering" />
+            <p>Comprehensive activity log with filtering capabilities</p>
           </div>
         </div>
-        <div class="slide-number">2 / 8</div>
       </div>
 
-      <!-- Slide 3: User Journey -->
-      <div class="slide">
-        <div class="slide-content">
-          <h2>PM Journey & Workflow Analysis</h2>
-          <p>Complete user journey mapping from login to stakeholder communication, identifying pain points (red indicators) and success opportunities (green indicators)</p>
-          <img class="slide-image" src="public/pm_journey_colored.png" alt="PM Journey Map showing workflow with decision points, pain points (red), and success points (green)" />
-          <p><strong>Key Insights:</strong> Multiple decision points create friction - Review Incident, Check Deployment, Communicate Status. The workflow shows emotional curve satisfaction levels and touchpoints for improvement.</p>
+      <div class="scope-section">
+        <h3>Out of Scope for MVP:</h3>
+        <ul class="scope-list">
+          <li>Raw YAML/log views</li>
+          <li>CI/CD pipeline debugging</li>
+          <li>Infrastructure tuning</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Metrics Section -->
+    <section id="metrics" class="content-section">
+      <h1>Metrics for Success</h1>
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-number">80%</div>
+          <div class="metric-label">Reduction in PM-to-engineer pings for status updates</div>
+          <div class="metric-timeline">Within 8 weeks</div>
         </div>
-        <div class="slide-number">3 / 8</div>
+        <div class="metric-card">
+          <div class="metric-number">≤5 min</div>
+          <div class="metric-label">Average time from incident detection to stakeholder awareness</div>
+          <div class="metric-timeline">Target performance</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-number">≥75%</div>
+          <div class="metric-label">Weekly active PMs using dashboard</div>
+          <div class="metric-timeline">By Month 2</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-number">50%</div>
+          <div class="metric-label">Faster release readiness confirmation vs current workflow</div>
+          <div class="metric-timeline">Immediate improvement</div>
+        </div>
       </div>
 
-      <!-- Slide 4: Solution Highlights -->
-      <div class="slide">
-        <div class="slide-content">
-          <h2>Solution Architecture</h2>
-          <div class="feature-grid">
-            <div class="feature-card">
-              <h4>🎯 Release Status Card</h4>
-              <ul>
-                <li>Real-time deployment status and version tracking</li>
-                <li>Environment indicators (staging, production)</li>
-                <li>Owner assignment and responsibility mapping</li>
-              </ul>
-            </div>
-            <div class="feature-card">
-              <h4>🚨 Incident Summaries</h4>
-              <ul>
-                <li>Severity classification with business impact</li>
-                <li>User count affected and service restoration</li>
-                <li>ETA and resolution timeline tracking</li>
-              </ul>
-            </div>
-            <div class="feature-card">
-              <h4>👥 Team Communication Map</h4>
-              <ul>
-                <li>Visual hierarchy and responsibility mapping</li>
-                <li>Communication flows and escalation paths</li>
-                <li>Recent activity and team coordination</li>
-              </ul>
-            </div>
-            <div class="feature-card">
-              <h4>📋 Activity Tracking</h4>
-              <ul>
-                <li>Comprehensive incident communication log</li>
-                <li>Filtering capabilities and search functionality</li>
-                <li>Automated stakeholder update generation</li>
-              </ul>
-            </div>
+      <div class="impact-summary">
+        <h2>Expected Business Impact</h2>
+        <p>These metrics translate to significant time savings, improved stakeholder communication, and reduced engineering interruptions, ultimately leading to faster decision-making and more efficient product development cycles.</p>
+      </div>
+    </section>
+
+    <!-- Workflows Section -->
+    <section id="workflows" class="content-section">
+      <h1>Workflows</h1>
+      
+      <div class="workflow-overview">
+        <h2>PM Journey Workflow</h2>
+        <div class="journey-steps">
+          <div class="journey-step">
+            <span class="step-number">1</span>
+            <h3>Login via SSO</h3>
+            <p>Instant access without managing extra credentials</p>
+          </div>
+          <div class="journey-step">
+            <span class="step-number">2</span>
+            <h3>View Release Status Card</h3>
+            <p>Deployment health, last update, version, owner</p>
+          </div>
+          <div class="journey-step">
+            <span class="step-number">3</span>
+            <h3>Review Incident Summaries</h3>
+            <p>Plain-language updates auto-pulled from incident management tools</p>
+          </div>
+          <div class="journey-step">
+            <span class="step-number">4</span>
+            <h3>Send Stakeholder Report</h3>
+            <p>Single-click Slack/Email distribution</p>
+          </div>
+          <div class="journey-step">
+            <span class="step-number">5</span>
+            <h3>Track History & Trends</h3>
+            <p>Access past releases, incidents, and resolution times</p>
           </div>
         </div>
-        <div class="slide-number">4 / 8</div>
       </div>
 
-      <!-- Slide 5: Dashboard Overview -->
-      <div class="slide">
-        <div class="slide-content">
-          <h2>Dashboard Overview</h2>
-          <p>Main dashboard providing real-time visibility into system health, deployment status, and incident management with PM-friendly language</p>
-          <img class="slide-image" src="public/dashboard2.png" alt="Dashboard Overview showing release status, incidents, and system metrics" />
-          <p><strong>Features:</strong> Release tracking (Frontend v2.4.1 Ready, API Gateway v1.8.0 Deploying), Active incidents with severity levels, and real-time system status in one unified view</p>
+      <div class="workflow-diagrams">
+        <h2>Workflow Diagrams</h2>
+        <div class="diagram-item">
+          <img src="public/pm_journey_colored.png" alt="Complete PM journey map with pain points and opportunities" />
+          <p>Complete user journey mapping showing pain points (red) and success opportunities (green)</p>
         </div>
-        <div class="slide-number">5 / 8</div>
+        <div class="diagram-item">
+          <img src="public/pm_focused_devops_flow.png" alt="PM-focused DevOps workflow" />
+          <p>Simplified PM-focused workflow from status check to stakeholder communication</p>
+        </div>
       </div>
 
-      <!-- Slide 6: Team Communication -->
-      <div class="slide">
-        <div class="slide-content">
-          <h2>Team Communication Map</h2>
-          <p>Visual representation of team hierarchy and communication flows for better coordination and responsibility tracking</p>
-          <img class="slide-image" src="public/dashboard-activity.png" alt="Team Communication Map showing hierarchy and recent activities" />
-          <p><strong>Key Components:</strong> Communication hierarchy (Users → Product Manager → Development Team), "Who Did What" activity feed showing recent deployments and incidents, and team responsibility mapping</p>
+      <div class="workflow-tools">
+        <h2>Project Management Tools</h2>
+        <div class="tools-grid">
+          <a href="https://miro.com/app/board/uXjVJWMk7Ic=/?share_link_id=930745039756" target="_blank" rel="noopener" class="tool-card">
+            <h3>1. Miro Board</h3>
+            <p>Journey mapping, user flow design, and collaborative ideation sessions</p>
+            <span class="tool-type">Design & Research</span>
+          </a>
+          <a href="https://www.notion.so/PM-User-Journey-DevOps-Tracker-Dashboard-24e0127bfce18009bcdbe6edea4aa73c?source=copy_link" target="_blank" rel="noopener" class="tool-card">
+            <h3>2. Notion Docs</h3>
+            <p>Comprehensive documentation, research findings, and project specifications</p>
+            <span class="tool-type">Documentation</span>
+          </a>
+          <a href="https://fierypooja.atlassian.net/jira/software/projects/PP/boards/34?atlOrigin=eyJpIjoiNWQwYTg3MjNjMjQzNDI1ZTk2ODQ4ZjcxMzA3NzhhZGIiLCJwIjoiaiJ9" target="_blank" rel="noopener" class="tool-card">
+            <h3>3. Jira Board</h3>
+            <p>Sprint planning, task management, and development tracking</p>
+            <span class="tool-type">Project Management</span>
+          </a>
         </div>
-        <div class="slide-number">6 / 8</div>
       </div>
+    </section>
+  </main>
 
-      <!-- Slide 7: Activity Tracking -->
-      <div class="slide">
-        <div class="slide-content">
-          <h2>Activity Log & Communication Tracking</h2>
-          <p>Comprehensive activity tracking with filtering capabilities for complete incident visibility and stakeholder communication</p>
-          <img class="slide-image" src="public/dashboardactivitylog.png" alt="Activity Log with filtering and communication tracking" />
-          <p><strong>Advanced Features:</strong> Search and filter by channel, severity, and date range. Detailed communication log with timestamps, senders, recipients, and delivery status for complete audit trail</p>
-        </div>
-        <div class="slide-number">7 / 8</div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>Made by Pooja Patel</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/pooja-p-77329933b/" target="_blank" rel="noopener" class="social-link">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/PoojasPatel013/" target="_blank" rel="noopener" class="social-link">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.597-2.804 5.625-5.475 5.921.431.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+          GitHub
+        </a>
       </div>
-
-      <!-- Slide 8: Resources & Contact -->
-      <div class="slide footer-slide">
-        <div class="slide-content">
-          <h2>Key Metrics & Impact</h2>
-          <div class="kpi-grid">
-            <div class="kpi-card">
-              <span class="kpi-number">85%</span>
-              <div class="kpi-label">Reduction in engineering pings</div>
-            </div>
-            <div class="kpi-card">
-              <span class="kpi-number">3 min</span>
-              <div class="kpi-label">Average status check time</div>
-            </div>
-            <div class="kpi-card">
-              <span class="kpi-number">100%</span>
-              <div class="kpi-label">Stakeholder visibility achieved</div>
-            </div>
-          </div>
-
-          <h3>Project Resources</h3>
-          <div class="links-grid">
-            <a href="https://github.com/PoojasPatel013/PM-Dashboard-design--co" target="_blank" rel="noopener" class="link-card">
-              <strong>GitHub Demo</strong><br>Live Implementation
-            </a>
-            <a href="https://www.notion.so/PM-User-Journey-DevOps-Tracker-Dashboard-24e0127bfce18009bcdbe6edea4aa73c?source=copy_link" target="_blank" rel="noopener" class="link-card">
-              <strong>Notion Docs</strong><br>Research & Planning
-            </a>
-            <a href="https://miro.com/app/board/uXjVJWMk7Ic=/?share_link_id=930745039756" target="_blank" rel="noopener" class="link-card">
-              <strong>Miro Board</strong><br>Journey Mapping
-            </a>
-            <a href="https://fierypooja.atlassian.net/jira/software/projects/PP/boards/34?atlOrigin=eyJpIjoiNWQwYTg3MjNjMjQzNDI1ZTk2ODQ4ZjcxMzA3NzhhZGIiLCJwIjoiaiJ9" target="_blank" rel="noopener" class="link-card">
-              <strong>Jira Board</strong><br>Project Management
-            </a>
-          </div>
-          
-          <p style="margin-top:48px; font-size:18px; color:var(--muted);">Made by Pooja Patel</p>
-          <div class="social-links">
-            <a href="https://www.linkedin.com/in/pooja-p-77329933b/" target="_blank" rel="noopener" class="social-link">
-              <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-              </svg>
-              LinkedIn
-            </a>
-            <a href="https://github.com/PoojasPatel013/" target="_blank" rel="noopener" class="social-link">
-              <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.597-2.804 5.625-5.475 5.921.431.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-              </svg>
-              GitHub
-            </a>
-          </div>
-        </div>
-        <div class="slide-number">8 / 8</div>
+      <div class="demo-link">
+        <a href="https://github.com/PoojasPatel013/PM-Dashboard-design--co" target="_blank" rel="noopener">View Live Demo →</a>
       </div>
     </div>
-
-    <!-- Navigation -->
-    <div class="navigation" id="navigation">
-      <div class="nav-dot active" data-slide="0"></div>
-      <div class="nav-dot" data-slide="1"></div>
-      <div class="nav-dot" data-slide="2"></div>
-      <div class="nav-dot" data-slide="3"></div>
-      <div class="nav-dot" data-slide="4"></div>
-      <div class="nav-dot" data-slide="5"></div>
-      <div class="nav-dot" data-slide="6"></div>
-      <div class="nav-dot" data-slide="7"></div>
-    </div>
-
-    <div class="nav-arrows nav-prev" id="prevBtn">‹</div>
-    <div class="nav-arrows nav-next" id="nextBtn">›</div>
-  </div>
+  </footer>
 
   <!-- Scripts -->
   <script src="script.js"></script>
