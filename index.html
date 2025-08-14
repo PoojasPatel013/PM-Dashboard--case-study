@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PM-Friendly DevOps Tracker Dashboard – Case Study</title>
+  <meta name="description" content="Case study: a PM-friendly DevOps Tracker Dashboard with research, journey map, Jira backlog, and live React demo." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#0b0f1a; --panel:#11162a; --muted:#8d99ae; --text:#e6e9f0;
+      --accent:#2f80ed; --ok:#27ae60; --warn:#f2994a; --bad:#e74c3c;
+      --card:#121a31; --border:rgba(255,255,255,.08);
+    }
+    *{box-sizing:border-box}
+    body{margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--text); background:linear-gradient(180deg,#0b0f1a 0%,#0e1426 100%) fixed;}
+    .wrap{max-width:1200px; margin:0 auto; padding:56px 20px 96px;}
+    header{display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:28px;}
+    .brand{display:flex; align-items:center; gap:12px;}
+    .dot{width:10px; height:10px; border-radius:50%; background:var(--accent); box-shadow:0 0 18px var(--accent);}
+    h1{font-size:28px; margin:0;}
+    .nav a{color:var(--muted); text-decoration:none; margin-left:16px; font-weight:500;}
+    .nav a:hover{color:var(--text)}
+    .hero{border:1px solid var(--border); background:radial-gradient(1200px 600px at 95% -10%, rgba(47,128,237,.2), transparent 60%), var(--panel); padding:28px; border-radius:16px; margin-bottom:22px;}
+    .hero h2{margin:0 0 8px; font-size:22px}
+    .grid{display:grid; grid-template-columns:repeat(12,1fr); gap:16px}
+    .card{grid-column:span 12; border:1px solid var(--border); background:var(--card); border-radius:14px; padding:18px}
+    @media(min-width:900px){ .half{grid-column:span 6} .third{grid-column:span 4} }
+    h3{margin:0 0 10px; font-size:18px}
+    h4{margin:0 0 8px; font-size:16px; color:var(--accent)}
+    p, li{color:#cfd6e6; line-height:1.65}
+    .tag{display:inline-block; padding:4px 10px; border-radius:999px; background:#0e1b34; border:1px solid var(--border); color:#b8c3da; margin-right:6px; font-size:12px}
+    .kpi{display:flex; gap:14px; flex-wrap:wrap; margin-top:8px}
+    .kpi .pill{background:#0e1c37; border:1px solid var(--border); padding:10px 12px; border-radius:12px}
+    .btn{display:inline-block; padding:10px 14px; border-radius:10px; text-decoration:none; color:white; background:var(--accent); font-weight:600; border:1px solid rgba(255,255,255,.12)}
+    .btn.outline{background:transparent; color:#cfe0ff; border-color:var(--accent)}
+    .img{width:100%; border-radius:12px; border:1px solid var(--border); margin-top:12px}
+    .img-gallery{display:grid; grid-template-columns:1fr; gap:16px; margin-top:16px}
+    @media(min-width:768px){ .img-gallery{grid-template-columns:1fr 1fr} }
+    .img-caption{font-size:14px; color:var(--muted); margin-top:8px; font-style:italic}
+    .feature-list{display:grid; gap:12px; margin-top:16px}
+    .feature-item{display:flex; align-items:flex-start; gap:12px; padding:12px; background:rgba(47,128,237,.05); border-radius:8px; border:1px solid rgba(47,128,237,.2)}
+    .feature-icon{width:20px; height:20px; border-radius:50%; background:var(--accent); flex-shrink:0; margin-top:2px}
+    footer{margin-top:36px; color:var(--muted); text-align:center}
+    .links a{display:inline-block; margin:6px 8px 0 0}
+    .workflow-section{margin-top:32px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand"><span class="dot"></span><h1>DevOps Tracker – PM Case Study</h1></div>
+      <nav class="nav">
+        <a href="#overview">Overview</a>
+        <a href="#research">Research</a>
+        <a href="#solution">Solution</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#workflows">Workflows</a>
+        <a href="#links">Links</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="overview">
+      <h2>Overview</h2>
+      <p>This case study showcases a PM-friendly DevOps Tracker Dashboard that helps non-technical stakeholders understand releases and incidents quickly. The solution transforms complex technical data into actionable insights for product managers.</p>
+      <div class="kpi">
+        <div class="pill">Persona: <strong>Pooja – PM, Core Platform</strong></div>
+        <div class="pill">Goal: Release readiness & incident impact in minutes</div>
+        <div class="pill">Outcome Targets: ↓ pings to eng, faster stakeholder awareness</div>
+      </div>
+    </section>
+
+    <div class="grid" id="research">
+      <div class="card half">
+        <h3>Persona & Scenario</h3>
+        <p><strong>Pooja</strong> needs to check an urgent release before a leadership meeting. She verifies deployment status, reviews incidents, and sends a stakeholder update.</p>
+        <div class="feature-list">
+          <div class="feature-item">
+            <div class="feature-icon"></div>
+            <div>
+              <strong>Pain Point:</strong> No single place for status information
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon"></div>
+            <div>
+              <strong>Pain Point:</strong> Too much technical jargon
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon"></div>
+            <div>
+              <strong>Pain Point:</strong> Manual reporting and communication
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card half">
+        <h3>Opportunities</h3>
+        <ul>
+          <li><strong>Auto-generate incident summaries</strong> in plain language for non-technical stakeholders.</li>
+          <li><strong>Automated status updates</strong> to Slack/Email channels.</li>
+          <li><strong>Single Sign-On (SSO)</strong> to reduce login friction.</li>
+          <li><strong>Real-time monitoring</strong> with clear visual indicators.</li>
+          <li><strong>Team communication mapping</strong> for better coordination.</li>
+        </ul>
+        <a class="btn outline" href="#dashboard">View Dashboard Solution →</a>
+      </div>
+      <div class="card">
+        <h3>PM Journey Map & Workflow</h3>
+        <p>Complete user journey from login → check deployment → review incidents → communicate status, with emotional highs/lows and mapped opportunities for improvement.</p>
+        <img class="img" src="/pm_journey_colored.png" alt="PM Journey Map showing workflow with decision points, pain points (red), and success points (green)" />
+        <p class="img-caption">Miro workflow diagram showing the complete DevOps process flow with decision points, pain points (red indicators), and success points (green indicators)</p>
+      </div>
+    </div>
+
+    <div class="grid" id="solution">
+      <div class="card half">
+        <h3>Solution Highlights</h3>
+        <div class="feature-list">
+          <div class="feature-item">
+            <div class="feature-icon"></div>
+            <div>
+              <strong>Release Status Card</strong> — Last deployment, version, readiness status, and owner information
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon"></div>
+            <div>
+              <strong>Incident Summaries</strong> — Impact assessment, affected users, severity levels, ETA, and responsible team
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon"></div>
+            <div>
+              <strong>Auto Updates</strong> — One-click and scheduled updates to Slack/Email
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon"></div>
+            <div>
+              <strong>Team Communication Map</strong> — Visual hierarchy and responsibility tracking
+            </div>
+          </div>
+        </div>
+        <div class="links">
+          <a class="btn" href="#dashboard">View Dashboard →</a>
+          <a class="btn outline" href="#workflows">See Workflows →</a>
+        </div>
+      </div>
+      <div class="card half">
+        <h3>Key Metrics & Impact</h3>
+        <div class="kpi">
+          <div class="pill"><strong>85%</strong> reduction in eng pings</div>
+          <div class="pill"><strong>3 min</strong> avg status check time</div>
+          <div class="pill"><strong>100%</strong> stakeholder visibility</div>
+        </div>
+        <p>The dashboard provides real-time visibility into system health, deployment status, and incident management, enabling PMs to make informed decisions quickly.</p>
+      </div>
+    </div>
+
+    <div class="workflow-section" id="dashboard">
+      <h2 style="margin-bottom:24px; color:var(--accent)">Dashboard Showcase</h2>
+      
+      <div class="grid">
+        <div class="card">
+          <h3>Dashboard Overview</h3>
+          <p>Main dashboard showing release status, active incidents, and system health at a glance. Features color-coded severity levels and clear action items.</p>
+          <img class="img" src="/dashboard2.png" alt="Dashboard Overview showing release status, incidents, and system metrics" />
+          <p class="img-caption">Main dashboard with release tracking, incident management, and real-time system status</p>
+        </div>
+
+        <div class="card half">
+          <h3>Team Communication Map</h3>
+          <p>Visual representation of team hierarchy and communication flows. Helps PMs understand who to contact for different issues and track recent activities.</p>
+          <img class="img" src="/dashboard-activity.png" alt="Team Communication Map showing hierarchy and recent activities" />
+          <p class="img-caption">Communication hierarchy with recent team activities and responsibility mapping</p>
+        </div>
+
+        <div class="card half">
+          <h3>Activity Log</h3>
+          <p>Comprehensive activity tracking with filtering capabilities. Shows all incident communications, team updates, and system changes in chronological order.</p>
+          <img class="img" src="/dashboardactivitylog.png" alt="Activity Log with filtering and communication tracking" />
+          <p class="img-caption">Detailed activity log with search, filtering, and communication status tracking</p>
+        </div>
+
+        <div class="card">
+          <h3>Dashboard Features</h3>
+          <div class="grid">
+            <div class="card third">
+              <h4>Release Management</h4>
+              <ul>
+                <li>Real-time deployment status</li>
+                <li>Version tracking</li>
+                <li>Environment indicators</li>
+                <li>Owner assignment</li>
+              </ul>
+            </div>
+            <div class="card third">
+              <h4>Incident Tracking</h4>
+              <ul>
+                <li>Severity classification</li>
+                <li>Impact assessment</li>
+                <li>User count affected</li>
+                <li>Resolution timeline</li>
+              </ul>
+            </div>
+            <div class="card third">
+              <h4>Communication</h4>
+              <ul>
+                <li>Team hierarchy mapping</li>
+                <li>Activity timeline</li>
+                <li>Automated notifications</li>
+                <li>Status updates</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid" id="workflows">
+      <div class="card half">
+        <h3>Jira – Epic & Stories</h3>
+        <p>Epic: PM-Friendly Dashboard Improvements. Stories include SSO implementation, Release Status Card, Incident Summaries, Auto Updates, Impact Metrics, and Activity Log features.</p>
+        <div class="kpi">
+          <div class="pill">6 Stories</div>
+          <div class="pill">3 Sprints</div>
+          <div class="pill">MVP Ready</div>
+        </div>
+        <a class="btn outline" href="YOUR_JIRA_BOARD_SHARE_URL" target="_blank" rel="noopener">See Jira Board →</a>
+      </div>
+      <div class="card half">
+        <h3>Miro – Flow Diagram</h3>
+        <p>System and PM journey flows used to inform the MVP scope and success criteria. Includes decision points, pain points, and optimization opportunities.</p>
+        <div class="kpi">
+          <div class="pill">User Journey</div>
+          <div class="pill">System Flow</div>
+          <div class="pill">Pain Points</div>
+        </div>
+        <a class="btn outline" href="YOUR_MIRO_PUBLIC_URL" target="_blank" rel="noopener">Open Miro Diagram →</a>
+      </div>
+    </div>
+
+    <div class="card" id="links">
+      <h3>All Resources</h3>
+      <div class="grid">
+        <div class="half">
+          <h4>Live Demo & Code</h4>
+          <ul>
+            <li><a href="YOUR_LIVE_REACT_DEMO_URL" target="_blank" rel="noopener">Live Demo (React)</a></li>
+            <li><a href="YOUR_GITHUB_REPO_URL" target="_blank" rel="noopener">GitHub Repo (Code)</a></li>
+          </ul>
+        </div>
+        <div class="half">
+          <h4>Research & Planning</h4>
+          <ul>
+            <li><a href="YOUR_NOTION_PUBLIC_URL" target="_blank" rel="noopener">Notion Research</a></li>
+            <li><a href="YOUR_MIRO_PUBLIC_URL" target="_blank" rel="noopener">Miro Journey Map</a></li>
+            <li><a href="YOUR_JIRA_BOARD_SHARE_URL" target="_blank" rel="noopener">Jira Board</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <footer>© Your Name — PM Case Study | DevOps Dashboard Solution</footer>
+  </div>
+</body>
+</html>
